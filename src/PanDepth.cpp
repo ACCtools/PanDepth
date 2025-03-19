@@ -56,6 +56,7 @@
 using namespace std;
 typedef unsigned long long ubit64_t;
 
+constexpr int precision = 4;
 void bamCov_help()
 {
 	cout<<""
@@ -1690,7 +1691,7 @@ int paf_main(In3str1v *paraFA04 )
 					double Coverage=(GeneCover)*100.0/(GeneLength);
 					double MeanDepth=(GeneDepth)*1.0/(GeneLength);
 					double GeneGC=(GeneGCGC)*100.0/(GeneLength);
-					OUT<<ChrName<<"\t"<<j<<"\t"<<End<<"\t"<<GeneLength<<"\t"<<GeneCover<<"\t"<<(GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth<<"\n";
+					OUT<<ChrName<<"\t"<<j<<"\t"<<End<<"\t"<<GeneLength<<"\t"<<GeneCover<<"\t"<<(GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth<<"\n";
 
 					SS_Cov+=(GeneCover);
 					SS_Len+=(GeneLength);
@@ -1702,7 +1703,7 @@ int paf_main(In3str1v *paraFA04 )
 			double MeanDepth=SS_TotalD*1.0/SS_Len;
 			double ALLGeneGCRation=SS_GCGC*100.0/SS_Len;
 
-			OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tGC(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<ALLGeneGCRation<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
+			OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tGC(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<ALLGeneGCRation<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
 
 
 		}
@@ -1741,7 +1742,7 @@ int paf_main(In3str1v *paraFA04 )
 					GeneLength=End-j+1;
 					double Coverage=(GeneCover)*100.0/(GeneLength);
 					double MeanDepth=(GeneDepth)*1.0/(GeneLength);
-					OUT<<ChrName<<"\t"<<j<<"\t"<<End<<"\t"<<GeneLength<<"\t"<<GeneCover<<"\t"<<(GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<Coverage<<"\t"<<MeanDepth<<"\n";
+					OUT<<ChrName<<"\t"<<j<<"\t"<<End<<"\t"<<GeneLength<<"\t"<<GeneCover<<"\t"<<(GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<Coverage<<"\t"<<MeanDepth<<"\n";
 
 					SS_Cov+=(GeneCover);
 					SS_Len+=(GeneLength);
@@ -1751,7 +1752,7 @@ int paf_main(In3str1v *paraFA04 )
 			double Coverage=SS_Cov*100.0/SS_Len;
 			double MeanDepth=SS_TotalD*1.0/SS_Len;
 
-			OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
+			OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
 		}
 	}
 
@@ -1790,7 +1791,7 @@ int paf_main(In3str1v *paraFA04 )
 					SS_GCGC+=((GeneInfoIT->second).GeneGCGC);
 					SS_TotalD+=((GeneInfoIT->second).GeneDepth);
 					stringstream  ss ;
-					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<GeneID<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth;
+					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<GeneID<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth;
 					SortResultIT=SortResult.find(((GeneInfoIT->second).GeneStart));
 					if (SortResultIT==SortResult.end())
 					{
@@ -1837,7 +1838,7 @@ int paf_main(In3str1v *paraFA04 )
 				double GeneGC=ChrSS_GCGC*100.0/ChrSS_Len;
 				double MeanDepth=ChrSS_TotalD*1.0/ChrSS_Len;
 				double Coverage=ChrSS_Cov*100.0/ChrSS_Len;
-				OUT<<ChrName<<"\t"<<ChrSS_Len<<"\t"<<ChrSS_Cov<<"\t"<<ChrSS_TotalD<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth<<"\n";
+				OUT<<ChrName<<"\t"<<ChrSS_Len<<"\t"<<ChrSS_Cov<<"\t"<<ChrSS_TotalD<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth<<"\n";
 
 			}
 		}
@@ -1864,7 +1865,7 @@ int paf_main(In3str1v *paraFA04 )
 					SS_TotalD+=((GeneInfoIT->second).GeneDepth);
 
 					stringstream  ss ;
-					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth;
+					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth;
 					SortResultIT=SortResult.find(((GeneInfoIT->second).GeneStart));
 					if (SortResultIT==SortResult.end())
 					{
@@ -1887,7 +1888,7 @@ int paf_main(In3str1v *paraFA04 )
 		double MeanDepth=SS_TotalD*1.0/SS_Len;
 		double ALLGeneGCRation=SS_GCGC*100.0/SS_Len;
 
-		OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tGC(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<ALLGeneGCRation<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
+		OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tGC(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<ALLGeneGCRation<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
 
 	}
 	else if (((paraFA04->InInt2)!=6))
@@ -1912,7 +1913,7 @@ int paf_main(In3str1v *paraFA04 )
 					SS_Len+=((GeneInfoIT->second).GeneLength);
 					SS_TotalD+=((GeneInfoIT->second).GeneDepth);
 					stringstream  ss ;
-					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<GeneID<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<Coverage<<"\t"<<MeanDepth;
+					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<GeneID<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<Coverage<<"\t"<<MeanDepth;
 
 					SortResultIT=SortResult.find(((GeneInfoIT->second).GeneStart));
 					if (SortResultIT==SortResult.end())
@@ -1958,7 +1959,7 @@ int paf_main(In3str1v *paraFA04 )
 
 				double MeanDepth=ChrSS_TotalD*1.0/ChrSS_Len;
 				double Coverage=ChrSS_Cov*100.0/ChrSS_Len;
-				OUT<<ChrName<<"\t"<<ChrSS_Len<<"\t"<<ChrSS_Cov<<"\t"<<ChrSS_TotalD<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<Coverage<<"\t"<<MeanDepth<<"\n";
+				OUT<<ChrName<<"\t"<<ChrSS_Len<<"\t"<<ChrSS_Cov<<"\t"<<ChrSS_TotalD<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<Coverage<<"\t"<<MeanDepth<<"\n";
 
 			}
 		}
@@ -1982,7 +1983,7 @@ int paf_main(In3str1v *paraFA04 )
 					SS_TotalD+=((GeneInfoIT->second).GeneDepth);
 
 					stringstream  ss ;
-					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<Coverage<<"\t"<<MeanDepth;
+					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<Coverage<<"\t"<<MeanDepth;
 					SortResultIT=SortResult.find(((GeneInfoIT->second).GeneStart));
 					if (SortResultIT==SortResult.end())
 					{
@@ -2004,7 +2005,7 @@ int paf_main(In3str1v *paraFA04 )
 		double Coverage=SS_Cov*100.0/SS_Len;
 		double MeanDepth=SS_TotalD*1.0/SS_Len;
 
-		OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tCoverage(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
+		OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tCoverage(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
 
 	}
 
@@ -3070,7 +3071,7 @@ int BamList_main(In3str1v *paraFA04 )
 					double Coverage=(GeneCover)*100.0/(GeneLength);
 					double MeanDepth=(GeneDepth)*1.0/(GeneLength);
 					double GeneGC=(GeneGCGC)*100.0/(GeneLength);
-					OUT<<ChrName<<"\t"<<j<<"\t"<<End<<"\t"<<GeneLength<<"\t"<<GeneCover<<"\t"<<(GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth<<"\n";
+					OUT<<ChrName<<"\t"<<j<<"\t"<<End<<"\t"<<GeneLength<<"\t"<<GeneCover<<"\t"<<(GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth<<"\n";
 
 					SS_Cov+=(GeneCover);
 					SS_Len+=(GeneLength);
@@ -3082,7 +3083,7 @@ int BamList_main(In3str1v *paraFA04 )
 			double MeanDepth=SS_TotalD*1.0/SS_Len;
 			double ALLGeneGCRation=SS_GCGC*100.0/SS_Len;
 
-			OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tGC(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<ALLGeneGCRation<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
+			OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tGC(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<ALLGeneGCRation<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
 
 
 		}
@@ -3121,7 +3122,7 @@ int BamList_main(In3str1v *paraFA04 )
 					GeneLength=End-j+1;
 					double Coverage=(GeneCover)*100.0/(GeneLength);
 					double MeanDepth=(GeneDepth)*1.0/(GeneLength);
-					OUT<<ChrName<<"\t"<<j<<"\t"<<End<<"\t"<<GeneLength<<"\t"<<GeneCover<<"\t"<<(GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<Coverage<<"\t"<<MeanDepth<<"\n";
+					OUT<<ChrName<<"\t"<<j<<"\t"<<End<<"\t"<<GeneLength<<"\t"<<GeneCover<<"\t"<<(GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<Coverage<<"\t"<<MeanDepth<<"\n";
 
 					SS_Cov+=(GeneCover);
 					SS_Len+=(GeneLength);
@@ -3131,7 +3132,7 @@ int BamList_main(In3str1v *paraFA04 )
 			double Coverage=SS_Cov*100.0/SS_Len;
 			double MeanDepth=SS_TotalD*1.0/SS_Len;
 
-			OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
+			OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
 		}
 	}
 
@@ -3172,7 +3173,7 @@ int BamList_main(In3str1v *paraFA04 )
 					SS_GCGC+=((GeneInfoIT->second).GeneGCGC);
 					SS_TotalD+=((GeneInfoIT->second).GeneDepth);
 					stringstream  ss ;
-					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<GeneID<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth;
+					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<GeneID<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth;
 					SortResultIT=SortResult.find(((GeneInfoIT->second).GeneStart));
 					if (SortResultIT==SortResult.end())
 					{
@@ -3219,7 +3220,7 @@ int BamList_main(In3str1v *paraFA04 )
 				double GeneGC=ChrSS_GCGC*100.0/ChrSS_Len;
 				double MeanDepth=ChrSS_TotalD*1.0/ChrSS_Len;
 				double Coverage=ChrSS_Cov*100.0/ChrSS_Len;
-				OUT<<ChrName<<"\t"<<ChrSS_Len<<"\t"<<ChrSS_Cov<<"\t"<<ChrSS_TotalD<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth<<"\n";
+				OUT<<ChrName<<"\t"<<ChrSS_Len<<"\t"<<ChrSS_Cov<<"\t"<<ChrSS_TotalD<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth<<"\n";
 
 			}
 		}
@@ -3246,7 +3247,7 @@ int BamList_main(In3str1v *paraFA04 )
 					SS_TotalD+=((GeneInfoIT->second).GeneDepth);
 
 					stringstream  ss ;
-					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth;
+					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth;
 					SortResultIT=SortResult.find(((GeneInfoIT->second).GeneStart));
 					if (SortResultIT==SortResult.end())
 					{
@@ -3269,7 +3270,7 @@ int BamList_main(In3str1v *paraFA04 )
 		double MeanDepth=SS_TotalD*1.0/SS_Len;
 		double ALLGeneGCRation=SS_GCGC*100.0/SS_Len;
 
-		OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tGC(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<ALLGeneGCRation<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
+		OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tGC(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<ALLGeneGCRation<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
 
 	}
 	else if (((paraFA04->InInt2)!=6))
@@ -3294,7 +3295,7 @@ int BamList_main(In3str1v *paraFA04 )
 					SS_Len+=((GeneInfoIT->second).GeneLength);
 					SS_TotalD+=((GeneInfoIT->second).GeneDepth);
 					stringstream  ss ;
-					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<GeneID<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<Coverage<<"\t"<<MeanDepth;
+					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<GeneID<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<Coverage<<"\t"<<MeanDepth;
 
 					SortResultIT=SortResult.find(((GeneInfoIT->second).GeneStart));
 					if (SortResultIT==SortResult.end())
@@ -3340,7 +3341,7 @@ int BamList_main(In3str1v *paraFA04 )
 
 				double MeanDepth=ChrSS_TotalD*1.0/ChrSS_Len;
 				double Coverage=ChrSS_Cov*100.0/ChrSS_Len;
-				OUT<<ChrName<<"\t"<<ChrSS_Len<<"\t"<<ChrSS_Cov<<"\t"<<ChrSS_TotalD<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<Coverage<<"\t"<<MeanDepth<<"\n";
+				OUT<<ChrName<<"\t"<<ChrSS_Len<<"\t"<<ChrSS_Cov<<"\t"<<ChrSS_TotalD<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<Coverage<<"\t"<<MeanDepth<<"\n";
 
 			}
 		}
@@ -3364,7 +3365,7 @@ int BamList_main(In3str1v *paraFA04 )
 					SS_TotalD+=((GeneInfoIT->second).GeneDepth);
 
 					stringstream  ss ;
-					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<Coverage<<"\t"<<MeanDepth;
+					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<Coverage<<"\t"<<MeanDepth;
 					SortResultIT=SortResult.find(((GeneInfoIT->second).GeneStart));
 					if (SortResultIT==SortResult.end())
 					{
@@ -3386,7 +3387,7 @@ int BamList_main(In3str1v *paraFA04 )
 		double Coverage=SS_Cov*100.0/SS_Len;
 		double MeanDepth=SS_TotalD*1.0/SS_Len;
 
-		OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tCoverage(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
+		OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tCoverage(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
 
 	}
 
@@ -4320,7 +4321,7 @@ int main(int argc, char *argv[])
 							double Coverage=(GeneCover)*100.0/(GeneLength);
 							double MeanDepth=(GeneDepth)*1.0/(GeneLength);
 							double GeneGC=(GeneGCGC)*100.0/(GeneLength);
-							OUT<<ChrName<<"\t"<<j<<"\t"<<End<<"\t"<<GeneLength<<"\t"<<GeneCover<<"\t"<<(GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth<<"\n";
+							OUT<<ChrName<<"\t"<<j<<"\t"<<End<<"\t"<<GeneLength<<"\t"<<GeneCover<<"\t"<<(GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth<<"\n";
 
 							SS_Cov+=(GeneCover);
 							SS_Len+=(GeneLength);
@@ -4332,7 +4333,7 @@ int main(int argc, char *argv[])
 					double MeanDepth=SS_TotalD*1.0/SS_Len;
 					double ALLGeneGCRation=SS_GCGC*100.0/SS_Len;
 
-					OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tGC(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<ALLGeneGCRation<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
+					OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tGC(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<ALLGeneGCRation<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
 
 
 				}
@@ -4371,7 +4372,7 @@ int main(int argc, char *argv[])
 							GeneLength=End-j+1;
 							double Coverage=(GeneCover)*100.0/(GeneLength);
 							double MeanDepth=(GeneDepth)*1.0/(GeneLength);
-							OUT<<ChrName<<"\t"<<j<<"\t"<<End<<"\t"<<GeneLength<<"\t"<<GeneCover<<"\t"<<(GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<Coverage<<"\t"<<MeanDepth<<"\n";
+							OUT<<ChrName<<"\t"<<j<<"\t"<<End<<"\t"<<GeneLength<<"\t"<<GeneCover<<"\t"<<(GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<Coverage<<"\t"<<MeanDepth<<"\n";
 
 							SS_Cov+=(GeneCover);
 							SS_Len+=(GeneLength);
@@ -4381,7 +4382,7 @@ int main(int argc, char *argv[])
 					double Coverage=SS_Cov*100.0/SS_Len;
 					double MeanDepth=SS_TotalD*1.0/SS_Len;
 
-					OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
+					OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
 				}
 			}
 
@@ -4789,7 +4790,7 @@ int main(int argc, char *argv[])
 						double Coverage=(GeneCover)*100.0/(GeneLength);
 						double MeanDepth=(GeneDepth)*1.0/(GeneLength);
 						double GeneGC=(GeneGCGC)*100.0/(GeneLength);
-						OUT<<ChrName<<"\t"<<j<<"\t"<<End<<"\t"<<GeneLength<<"\t"<<GeneCover<<"\t"<<(GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth<<"\n";
+						OUT<<ChrName<<"\t"<<j<<"\t"<<End<<"\t"<<GeneLength<<"\t"<<GeneCover<<"\t"<<(GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth<<"\n";
 
 						SS_Cov+=(GeneCover);
 						SS_Len+=(GeneLength);
@@ -4801,7 +4802,7 @@ int main(int argc, char *argv[])
 				double MeanDepth=SS_TotalD*1.0/SS_Len;
 				double ALLGeneGCRation=SS_GCGC*100.0/SS_Len;
 
-				OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tGC(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<ALLGeneGCRation<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
+				OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tGC(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<ALLGeneGCRation<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
 
 
 			}
@@ -4840,7 +4841,7 @@ int main(int argc, char *argv[])
 						GeneLength=End-j+1;
 						double Coverage=(GeneCover)*100.0/(GeneLength);
 						double MeanDepth=(GeneDepth)*1.0/(GeneLength);
-						OUT<<ChrName<<"\t"<<j<<"\t"<<End<<"\t"<<GeneLength<<"\t"<<GeneCover<<"\t"<<(GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<Coverage<<"\t"<<MeanDepth<<"\n";
+						OUT<<ChrName<<"\t"<<j<<"\t"<<End<<"\t"<<GeneLength<<"\t"<<GeneCover<<"\t"<<(GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<Coverage<<"\t"<<MeanDepth<<"\n";
 
 						SS_Cov+=(GeneCover);
 						SS_Len+=(GeneLength);
@@ -4850,7 +4851,7 @@ int main(int argc, char *argv[])
 				double Coverage=SS_Cov*100.0/SS_Len;
 				double MeanDepth=SS_TotalD*1.0/SS_Len;
 
-				OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
+				OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
 			}
 		}
 
@@ -4895,7 +4896,7 @@ int main(int argc, char *argv[])
 					SS_GCGC+=((GeneInfoIT->second).GeneGCGC);
 					SS_TotalD+=((GeneInfoIT->second).GeneDepth);
 					stringstream  ss ;
-					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<GeneID<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth;
+					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<GeneID<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth;
 					SortResultIT=SortResult.find(((GeneInfoIT->second).GeneStart));
 					if (SortResultIT==SortResult.end())
 					{
@@ -4942,7 +4943,7 @@ int main(int argc, char *argv[])
 				double GeneGC=ChrSS_GCGC*100.0/ChrSS_Len;
 				double MeanDepth=ChrSS_TotalD*1.0/ChrSS_Len;
 				double Coverage=ChrSS_Cov*100.0/ChrSS_Len;
-				OUT<<ChrName<<"\t"<<ChrSS_Len<<"\t"<<ChrSS_Cov<<"\t"<<ChrSS_TotalD<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth<<"\n";
+				OUT<<ChrName<<"\t"<<ChrSS_Len<<"\t"<<ChrSS_Cov<<"\t"<<ChrSS_TotalD<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth<<"\n";
 
 			}
 		}
@@ -4969,7 +4970,7 @@ int main(int argc, char *argv[])
 					SS_TotalD+=((GeneInfoIT->second).GeneDepth);
 
 					stringstream  ss ;
-					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth;
+					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<GeneGC<<"\t"<<Coverage<<"\t"<<MeanDepth;
 					SortResultIT=SortResult.find(((GeneInfoIT->second).GeneStart));
 					if (SortResultIT==SortResult.end())
 					{
@@ -4992,7 +4993,7 @@ int main(int argc, char *argv[])
 		double MeanDepth=SS_TotalD*1.0/SS_Len;
 		double ALLGeneGCRation=SS_GCGC*100.0/SS_Len;
 
-		OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tGC(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<ALLGeneGCRation<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
+		OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tGC(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<ALLGeneGCRation<<"\tCoverage(%): "<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
 
 	}
 	else if (((paraFA04->InInt2)!=6))
@@ -5017,7 +5018,7 @@ int main(int argc, char *argv[])
 					SS_Len+=((GeneInfoIT->second).GeneLength);
 					SS_TotalD+=((GeneInfoIT->second).GeneDepth);
 					stringstream  ss ;
-					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<GeneID<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<Coverage<<"\t"<<MeanDepth;
+					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<GeneID<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<Coverage<<"\t"<<MeanDepth;
 
 					SortResultIT=SortResult.find(((GeneInfoIT->second).GeneStart));
 					if (SortResultIT==SortResult.end())
@@ -5063,7 +5064,7 @@ int main(int argc, char *argv[])
 
 				double MeanDepth=ChrSS_TotalD*1.0/ChrSS_Len;
 				double Coverage=ChrSS_Cov*100.0/ChrSS_Len;
-				OUT<<ChrName<<"\t"<<ChrSS_Len<<"\t"<<ChrSS_Cov<<"\t"<<ChrSS_TotalD<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<Coverage<<"\t"<<MeanDepth<<"\n";
+				OUT<<ChrName<<"\t"<<ChrSS_Len<<"\t"<<ChrSS_Cov<<"\t"<<ChrSS_TotalD<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<Coverage<<"\t"<<MeanDepth<<"\n";
 
 			}
 		}
@@ -5087,7 +5088,7 @@ int main(int argc, char *argv[])
 					SS_TotalD+=((GeneInfoIT->second).GeneDepth);
 
 					stringstream  ss ;
-					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<Coverage<<"\t"<<MeanDepth;
+					ss<<ChrName<<"\t"<<((GeneInfoIT->second).GeneStart)<<"\t"<<((GeneInfoIT->second).GeneEnd)<<"\t"<<((GeneInfoIT->second).GeneLength)<<"\t"<<((GeneInfoIT->second).GeneCover)<<"\t"<<((GeneInfoIT->second).GeneDepth)<<"\t"<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<Coverage<<"\t"<<MeanDepth;
 					SortResultIT=SortResult.find(((GeneInfoIT->second).GeneStart));
 					if (SortResultIT==SortResult.end())
 					{
@@ -5109,7 +5110,7 @@ int main(int argc, char *argv[])
 		double Coverage=SS_Cov*100.0/SS_Len;
 		double MeanDepth=SS_TotalD*1.0/SS_Len;
 
-		OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tCoverage(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(2)<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
+		OUT<<"##RegionLength: "<<SS_Len<<"\tCoveredSite: "<<SS_Cov<<"\tCoverage(%): "<<setiosflags(ios::fixed)<<setiosflags(ios::right)<<setprecision(precision)<<Coverage<<"\tMeanDepth: "<<MeanDepth<<endl;
 
 	}
 
